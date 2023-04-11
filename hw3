@@ -1,0 +1,21 @@
+class Node():
+    def __init__(self, value):
+        self.next = None
+        self.values = value
+
+
+class List():
+    head = None
+
+    def add_node(self, node: Node):
+        if self.head is None:
+            self.head = node
+        else:
+            self.head.next = node
+
+    def revers(self, curent_node: Node, prev_node: Node):
+        if curent_node.next is None:
+            self.head = curent_node
+        else:
+            self.revers(curent_node.next, curent_node)
+        curent_node.next = prev_node
