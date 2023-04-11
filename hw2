@@ -1,0 +1,30 @@
+def hip(arr,size_arr,index):
+    large=index
+    left_childr=(2*index)+1
+    right_childr=(2*index)+2
+    if left_childr<size_arr and arr[left_childr]>arr[large]:
+        large=left_childr
+
+    if right_childr<size_arr and arr[right_childr]>arr[large]:
+        large=right_childr
+
+    if large!=index:
+        arr[index], arr[large] = arr[large], arr[index]
+        hip(arr,size_arr,large)
+
+def heapsort(arr):
+    n=len(arr)
+
+    for i in range(n//2,-1,-1):
+        hip(arr,n,i)
+
+    for i in range(n-1,0,-1):
+        arr[0], arr[i]=arr[i], arr[0]
+        hip(arr,n,i)
+
+    return arr
+
+
+
+
+print(heapsort([9,33,1,0,33,5,1111]))
